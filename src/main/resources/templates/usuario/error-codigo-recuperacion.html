@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fallo en el Código de Verificación</title>
+    <!-- Agrega la referencia a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link th:href="@{/css/error-codigo.css}" rel="stylesheet">
+   
+</head>
+<body class="bodyError">
+
+<div class="container error-container">
+    <h1 class="text-danger">Fallo en el Código de Verificación</h1>
+    <p>Vuelva a intentarlo.</p>
+
+    <a th:href="@{/}" class="btn btn-primary mt-3">Volver a intentar</a>
+</div>
+
+<!-- Agrega la referencia a Bootstrap JS y Popper.js (si es necesario) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

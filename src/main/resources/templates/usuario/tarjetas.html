@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tarjetas del Usuario</title>
+</head>
+<body>
+    <h1>Tarjetas del Usuario</h1>
+
+    
+<table>
+        <thead>
+            <tr>
+                <th>Número de Tarjeta</th>
+                <th>Nombre del Titular</th>
+                <th>Fecha de Expiración</th>
+                <th>Código de Seguridad</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:each="formaDePago : ${tarjetasUsuario}">
+                <td th:text="${formaDePago.numero}"></td>
+                <td th:text="${formaDePago.nombreTitular}"></td>
+                <td th:text="${formaDePago.fechaExpiracion}"></td>
+                <td th:text="${formaDePago.codigoSeguridad}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Agregar botón "Agregar Tarjeta" -->
+   <a class="btn btn-primary" th:href="@{/agregar-tarjeta}">Agregar Tarjeta</a>
+
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/templates/heroic-features)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+#cuerpo-home{
+	 background-image: url('/images/fondo-gamer.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+}
+
+#h1-home{
+	 background: none;
+     border: none;
+     color: rgb(255, 255, 255);
+}
+#p-home{
+	
+	color: #ffffff;
+}
+.jumbotron {
+	background-image: url('/images/nether-portal.gif');
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+    } 
+#body-create{
+	background-image: url('/images/10370.png');
+}
+

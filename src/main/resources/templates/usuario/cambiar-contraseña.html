@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar Contraseña</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form id="changePasswordForm" th:action="@{actualizarContraseña}" method="post">
+        <div class="form-group">
+          <label for="newPassword">Ingresa la nueva contraseña:</label>
+          <input type="password" class="form-control" id="newPassword" name="newPassword" onkeyup="validatePassword()" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Ingresa nuevamente la contraseña:</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" onkeyup="validatePassword()" required>
+        </div>
+        <div id="passwordMismatch" class="mt-3 text-danger" style="display: none;">
+          Las contraseñas no coinciden. Por favor, inténtalo de nuevo.
+        </div>
+        <input type="hidden" class="form-control" id="email" name="email" th:value="${correoUsuario}">
+        <button type="submit" class="btn btn-primary mt-3" id="submitButton" disabled>Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script th:src="@{/javascript/validar-password.js}" type="text/javascript"></script>
+</body>
+</html>
