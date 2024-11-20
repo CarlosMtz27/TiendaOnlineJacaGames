@@ -48,7 +48,8 @@
     		<version>2.1.7</version> <!-- Asegúrate de utilizar la última versión -->
 		</dependency>
 			
-		
+
+	<!-- Dependencia para enviar correos desde la aplicacion-->	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
@@ -82,10 +83,14 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Dependencias para la seguridad de la aplicacion-->	
+		<!--proporciona la integración de Spring Security en una aplicación-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- Proporciona clases y métodos que permiten definir
+		 reglas de seguridad, configurar autenticación y autorización de seguridad dentro de la aplicación.-->
 		<dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>

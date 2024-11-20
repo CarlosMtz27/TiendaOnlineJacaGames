@@ -66,7 +66,6 @@ public class DetalleVenta {
 		this.total = total;
 	}
 
-
 	public Venta getVenta() {
 		return venta;
 	}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .scroll-box {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Términos y Condiciones de Uso y Política de Privacidad</h1>
+        <p><strong>Fecha de entrada en vigor:</strong> <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd')}"></span></p>
+        
+        <div class="scroll-box">
+            <h2>1. Recopilación de Datos Personales</h2>
+            <p>Al registrarte en <strong>Jaca Games</strong>, es posible que te solicitemos ciertos datos personales, tales como: nombre completo, correo electrónico, dirección de envío, entre otros.</p>
+
+            <h2>2. Uso de los Datos Personales</h2>
+            <p>Los datos personales recopilados se utilizan para procesar y gestionar tus pedidos, enviar comunicaciones relevantes, mejorar tu experiencia en nuestra tienda, y cumplir con las obligaciones legales correspondientes.</p>
+
+            <h2>3. Protección de Datos Personales</h2>
+            <p>Nos comprometemos a proteger tus datos personales mediante la implementación de medidas de seguridad adecuadas.</p>
+
+            <h2>4. Almacenamiento y Retención de Datos</h2>
+            <p>Tus datos personales se almacenarán mientras tu cuenta esté activa o según lo requiera la ley. Una vez que ya no sea necesario conservarlos, serán eliminados de forma segura.</p>
+
+            <h2>5. Derechos del Usuario</h2>
+            <p>Como usuario registrado, tienes derecho a acceder a tus datos personales, rectificar cualquier información incorrecta, y solicitar la eliminación de tus datos, entre otros derechos.</p>
+
+            <h2>6. Uso de Cookies</h2>
+            <p>Utilizamos cookies para mejorar la experiencia del usuario, analizar el tráfico y personalizar el contenido.</p>
+
+            <h2>7. Cambios en los Términos y Condiciones</h2>
+            <p>Nos reservamos el derecho a modificar estos Términos y Condiciones en cualquier momento. Se notificará a los usuarios de cambios significativos.</p>
+
+            <h2>8. Contacto</h2>
+            <p>Si tienes alguna pregunta sobre estos términos o sobre el uso de tus datos personales, contacta con nosotros en <strong><a href="mailto:pixelpalaceuacm@gmail.com" class="text-light mx-2">pixelpalaceuacm@gmail.com</a></strong>.</p>
+
+            <p><strong>Al registrarte en <strong>Jaca Games</strong>, confirmas que has leído y aceptas estos Términos y Condiciones y nuestra Política de Privacidad.</strong></p>
+        </div>
+ 
+    </div>
+
+</body>
+</html>

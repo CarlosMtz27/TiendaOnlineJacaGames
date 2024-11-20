@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<title>Pixel Palace</title>
+		<title>Jaca Games</title>
 		<!-- Bootstrap core CSS -->
 		<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -18,13 +18,14 @@
 		<link rel="icon" href="images/almohadilla-de-juego.png" type="image/png">
 	</head>
 	<body id="cuerpo-home">
+		<div class="mi-contenedor">
 		<!-- Navigation -->
 		<div th:include="administrador/template_admin.html::header"></div>
 		<!-- Page Content -->
 		<div class="container">
 			<!-- Jumbotron Header -->
 			<header class="jumbotron my-4">
-				<h1 class="display-3" id="h1-home">Bienvenido Pixel Palace</h1>
+				<h1 class="display-3" id="h1-home">Bienvenido Jaca Games</h1>
 				<p class="lead" id="p-home">Tu tienda de productos en Línea</p>
 			</header>
 			<!-- Page Features -->
@@ -42,6 +43,7 @@
 				</div>
 			</div>
 			<!-- /.row -->
+		</div>
 		</div>
 		<!-- /.container -->
 		<div th:include="administrador/template_admin.html::footer"></div>
