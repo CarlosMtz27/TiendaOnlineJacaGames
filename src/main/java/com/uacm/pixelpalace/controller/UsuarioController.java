@@ -230,26 +230,12 @@ public class UsuarioController {
         formaDePago.setUsuario(usuario.get());
         FormaDePago forma = new FormaDePago();
         String url="";
-        // Imprimir los datos antes de guardarlos
-        System.out.println("Datos a agregar a la base de datos:");
-        System.out.println("Número de tarjeta: " + formaDePago.getNumero());
-        System.out.println("Nombre del titular: " + formaDePago.getNombreTitular());
-        System.out.println("Fecha de expiración: " + formaDePago.getFechaExpiracion());
-        System.out.println("Código de seguridad: " + formaDePago.getCodigoSeguridad());
 	    List<FormaDePago> formas = formaPagoService.findAllByUsuarioId(userId);
 	    Boolean resultado=false;
 	    int indice=0;
 	    for(int i=0; i<formas.size();i++) {
-	    	System.out.println(formas.get(i).getNumero());
-	    	//System.out.println("numero recibido");
-	    	System.out.println(formaDePago.getNumero());
 	    	if(!(formas.get(i).getNumero().equals(formaDePago.getNumero()))) {
-	    		//formaPagoService.save(formaDePago);
-	    		//System.out.print("Hola mundo\n");
-	    		//forma=formaPagoService.findByNumeroAndUsuarioId(formas.get(i).getNumero(), formas.get(i).getUsuario().getId());
-	    		//System.out.print(forma);
-	    		//url="redirect:/order?formaDePagoId=" + forma.getId()
-	    		//indice = i;
+	    		
 	    		resultado=false;
 	    		System.out.println(resultado);
 	    	}else {
@@ -259,43 +245,57 @@ public class UsuarioController {
 	    		break;
 	    	}
 	    }
-	    //System.out.print(forma);
+	    
 	    if(resultado == false) {
-	    	System.out.println(formaDePago);
 	    	formaPagoService.save(formaDePago);
 	    	forma=formaPagoService.findByNumeroAndUsuarioId(formaDePago.getNumero(),formaDePago.getUsuario().getId());
 	    	url="redirect:/order?formaDePagoId=" + forma.getId();
-	    	System.out.println(forma);
 	    }else {
 	    	forma=formaPagoService.findByNumeroAndUsuarioId(formas.get(indice).getNumero(), formas.get(indice).getUsuario().getId());
 	    	url="redirect:/order?formaDePagoId=" + forma.getId();
-	    	System.out.println("Si esta en la bd");
-	    }
-	    System.out.println("Los datos son: \n\n");
-	    System.out.print(forma);
+	    }	
 	    
 	    model.addAttribute("formaDePago", forma);
 	    
 	    return url;
 	    
-	    
-	    //Integer idUsuario = Integer.parseInt(session.getAttribute("idusuario").toString());
-	    //List<FormaDePago> formas = formaPagoService.findAllByUsuarioId(idUsuario);
-	    //if (userId != null) {
-	        // Asignar el usuario al objeto FormaDePago
-	        //Optional<Usuario> usuario = usuarioService.findById(userId);
-	        //formaDePago.setUsuario(usuario.get());
-	        //formaDePago.setCodigoSeguridad(forma)
-
-	       
-
-	        // Guardar el objeto FormaDePago en la base de datos
-	        //formaPagoService.save(formaDePago);
-	    //}
-	    //model.addAttribute("formaDePago", formaDePago);
-	    // Redirigir al controlador que muestra las tarjetas
-	    
 	}
 	
+	/*@PostMapping("/agregar-tarjeta")
+	public String agregarTarjeta(Model model, HttpSession session, @ModelAttribute("formaDePago") FormaDePago formaDePago) {
+	    Integer userId = (Integer) session.getAttribute("idusuario");
+	    Optional<Usuario> usuario = usuarioService.findById(userId);
+
+	    
+
+	    // Generar el código único
+	    String codigoJuego = generarCodigoJuego();
+
+	    // Datos del correo
+	    String asunto = "Gracias por tu compra";
+	    String mensaje = String.format(
+	        "Hola %s,\n\nGracias por tu compra en Pixel Palace.\n\n"
+	        + "Los datos de tu tarjeta son:\n"
+	        + "Número de tarjeta: %s\n"
+	        + "Nombre del titular: %s\n"
+	        + "Fecha de expiración: %s\n\n"
+	        + "Tu código para tu juego de \"[Nombre del juego]\" es: %s\n\n"
+	        + "¡Disfruta de tu juego!\n\nEquipo de Pixel Palace.",
+	        usuario.get().getNombre(), 
+	        formaDePago.getNumero(), 
+	        formaDePago.getNombreTitular(), 
+	        formaDePago.getFechaExpiracion(), 
+	        codigoJuego
+	    );
+
+	    // Enviar correo
+	    sendMailService.sendStyledMail("pixelpalaceuacm@gmail.com", usuario.get().getEmail(), asunto, mensaje);
+
+	    // Redirigir a la página de orden con el ID de la forma de pago
+	    FormaDePago formaGuardada = formaPagoService.findByNumeroAndUsuarioId(formaDePago.getNumero(), formaDePago.getUsuario().getId());
+	    return "redirect:/order?formaDePagoId=" + formaGuardada.getId();
+	}*/
+
+
 
 }

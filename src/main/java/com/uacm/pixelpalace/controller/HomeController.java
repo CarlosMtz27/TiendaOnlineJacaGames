@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +32,7 @@ import com.uacm.pixelpalace.service.IFormaPagoService;
 import com.uacm.pixelpalace.service.IUsuarioService;
 import com.uacm.pixelpalace.service.IVentaService;
 import com.uacm.pixelpalace.service.ProductoService;
+import com.uacm.pixelpalace.service.SendMailServiceCompra;
 
 @Controller
 @RequestMapping("/")
@@ -38,6 +40,10 @@ public class HomeController {
 
 	private final Logger log = LoggerFactory.getLogger(HomeController.class);
 
+	
+	@Autowired
+	private SendMailServiceCompra sendMailService;
+	
 	@Autowired
 	private ProductoService productoService;
 
@@ -240,40 +246,88 @@ public class HomeController {
 
 	@PostMapping("/saveVenta")
 	public String saveVenta(@ModelAttribute("formaDePago") FormaDePago formaDePago, Model model, HttpSession session)
-			throws DocumentException {
-		Date fechaCreacion = new Date();
-		venta.setFechaCreacion(fechaCreacion);
-		venta.setNumero(ventaService.generarNumeroVenta());
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println(formaDePago.getNombreTitular());
-		System.out.println(formaDePago.getTipo());
-		System.out.println(formaDePago.getNumero());
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		// Usuario
-		Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+	        throws DocumentException {
+	    Date fechaCreacion = new Date();
+	    venta.setFechaCreacion(fechaCreacion);
+	    venta.setNumero(ventaService.generarNumeroVenta());
+	    ArrayList<String> nombres = new ArrayList<>();
+	    
+	    // Obtener el usuario actual desde la sesión
+	    Usuario usuario = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+	    venta.setUsuario(usuario);
+	    ventaService.save(venta);
 
-		venta.setUsuario(usuario);
-		ventaService.save(venta);
+	    // Guardar detalles de la venta
+	    for (DetalleVenta dt : detalles) {
+	        dt.setVenta(venta);
+	        detalleVentaService.save(dt);
+	        nombres.add(dt.getNombre());
+	    }
 
-		System.out.println(venta);
-		// Guardar detalles
-		for (DetalleVenta dt : detalles) {
-			dt.setVenta(venta);
-			detalleVentaService.save(dt);
-			System.out.println(dt);
-		}
+	    // Generar códigos únicos para los juegos y construir la tabla
+	    StringBuilder juegosTabla = new StringBuilder();
+	    for (String nombreJuego : nombres) {
+	        String codigoJuego = generarCodigoJuego();
+	        juegosTabla.append(String.format(
+	            "          <tr>" +
+	            "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>%s</td>" +
+	            "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>%s</td>" +
+	            "          </tr>", 
+	            nombreJuego, codigoJuego
+	        ));
+	    }
 
-		model.addAttribute("venta", venta);
-		model.addAttribute("detalles", detalles);
-		model.addAttribute("usuario", usuario);
-		model.addAttribute("formadepago", formaDePago);
+	    // Datos del correo
+	    String asunto = "Gracias por tu compra en Jaca Games";
+	    String mensaje = String.format(
+	        "<html>" +
+	        "  <body style='font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0;'>" +
+	        "    <div style='background-color: #f4f4f4; padding: 20px;'>" +
+	        "      <div style='max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);'>" +
+	        "        <h1 style='color: #333;'>¡Gracias por tu compra, %s!</h1>" +
+	        "        <p style='color: #555;'>Gracias por confiar en <b>Jaca Games</b>. Estamos encantados de que hayas elegido disfrutar de tus videojuegos con nosotros.</p>" +
+	        "        <p style='color: #555;'>Aquí están los datos de tu tarjeta:</p>" +
+	        "        <table style='width: 100%%; border-collapse: collapse; margin: 10px 0;'>" +
+	        "          <tr style='background-color: #f9f9f9;'>" +
+	        "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>Número de tarjeta:</td>" +
+	        "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>%s</td>" +
+	        "          </tr>" +
+	        "          <tr>" +
+	        "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>Nombre del titular:</td>" +
+	        "            <td style='padding: 10px; border: 1px solid #ddd; color: #333;'>%s</td>" +
+	        "          </tr>" +
+	        "        </table>" +
+	        "        <p style='color: #555;'>Tus juegos y códigos son los siguientes:</p>" +
+	        "        <table style='width: 100%%; border-collapse: collapse; margin: 10px 0;'>" +
+	        "          <tr style='background-color: #f9f9f9;'>" +
+	        "            <th style='padding: 10px; border: 1px solid #ddd; color: #333; text-align: left;'>Juego</th>" +
+	        "            <th style='padding: 10px; border: 1px solid #ddd; color: #333; text-align: left;'>Código</th>" +
+	        "          </tr>" +
+	        juegosTabla.toString() +
+	        "        </table>" +
+	        "        <p style='color: #555;'>¡Disfruta de tu juego! Si tienes alguna pregunta, no dudes en contactarnos.</p>" +
+	        "        <p style='text-align: center; font-size: 12px; color: #888;'>Equipo de Jaca Softworks</p>" +
+	        "      </div>" +
+	        "    </div>" +
+	        "  </body>" +
+	        "</html>",
+	        usuario.getNombre(), 
+	        formaDePago.getNumero(), 
+	        formaDePago.getNombreTitular()
+	    );
 
-		return "usuario/ticketCompraView"; // Nombre de la vista del ticket de compra
+	    // Enviar correo
+	    sendMailService.sendStyledMail("pixelpalaceuacm@gmail.com", usuario.getEmail(), asunto,mensaje);
+
+	    // Preparar modelo para la vista
+	    model.addAttribute("venta", venta);
+	    model.addAttribute("detalles", detalles);
+	    model.addAttribute("usuario", usuario);
+	    model.addAttribute("formadepago", formaDePago);
+
+	    return "usuario/ticketCompraView"; // Nombre de la vista del ticket de compra
 	}
+
 
 	@GetMapping("/juegos")
 	public String showAllGames(Model model) {
@@ -360,6 +414,30 @@ public class HomeController {
 
 		return "usuario/juegos";
 	}
+	
+	// Método para generar el código único
+	public static String generarCodigoJuego() {
+	    String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    Random random = new Random();
+
+	    // Generar 4 grupos de 4 caracteres separados por '-'
+	    StringBuilder codigo = new StringBuilder();
+	    for (int i = 0; i < 4; i++) {
+	        for (int j = 0; j < 4; j++) {
+	            codigo.append(caracteres.charAt(random.nextInt(caracteres.length())));
+	        }
+	        if (i < 3) {
+	            codigo.append('-'); // Añadir guión entre grupos
+	        }
+	    }
+	    return codigo.toString();
+	}
+	
+	@GetMapping("/aviso-pago")
+	public String avisoPago() {
+		return "home/aviso-pago";
+	}
+	
 }
 /*
  * private byte[] generarPDF() throws DocumentException { ByteArrayOutputStream

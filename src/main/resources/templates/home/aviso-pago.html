@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<title>Aviso sobre los pagos</title>
+    	<style>
+        	body {
+            	font-family: Arial, sans-serif;
+            	line-height: 1.6;
+            	margin: 0;
+            	padding: 0;
+            	background-color: #f4f4f4;
+        	}
+        	.container {
+            	max-width: 800px;
+            	margin: 40px auto;
+            	padding: 20px;
+            	background-color: #fff;
+            	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            	border-radius: 8px;
+        	}
+        	h1, h2 {
+            	color: #333;
+       	 	}
+        	.scroll-box {
+            	max-height: 400px;
+            	overflow-y: auto;
+            	border: 1px solid #ddd;
+            	padding: 15px;
+            	margin-bottom: 20px;
+            	border-radius: 5px;
+        	}
+        	label {
+            	display: block;
+            	margin-top: 20px;
+            	font-weight: bold;
+        	}
+    	</style>
+	</head>
+	<body>
+    	<div class="container">
+        	<h1>Aviso sobre lo pagos</h1>
+        	<p><strong>Fecha de entrada en vigor:</strong> <span th:text="${#dates.format(new java.util.Date(), 'yyyy-MM-dd')}"></span></p>
+        
+        	<div class="scroll-box">
+        		<h2>Procesamiento de Pagos</h2>
+				<p>En <strong>Jaca Games</strong>, queremos asegurarte que no almacenamos ni procesamos directamente tus datos bancarios. Todos los pagos realizados a través de nuestra plataforma son gestionados por <strong>PayFusion</strong>, una empresa especializada en soluciones de pago en línea que cumple con los más altos estándares de seguridad y cifrado de datos.</p>
+				<p>Al realizar un pago, la información de tu tarjeta o método de pago será enviada directamente a <strong>PayFusion</strong>, quien se encargará de procesarla de manera segura y garantizar la protección de tus datos sensibles. Esto nos permite ofrecerte una experiencia confiable y eficiente, sin comprometer la privacidad de tu información financiera.</p>
+				<p>Es importante mencionar que <strong>Jaca Games</strong> se deslinda de cualquier responsabilidad relacionada con el uso, manejo o tratamiento de tus datos por parte de <strong>PayFusion</strong>. Recomendamos que consultes directamente las políticas de privacidad y términos de servicio de esta pasarela de pago para obtener más información.</p>
+				<p>Si tienes preguntas o inquietudes acerca de los pagos o el servicio ofrecido por <strong>PayFusion</strong>, puedes consultar su sitio web oficial haciendo clic <a href="https://www.ecollect.co/" target="_blank" class="text-light mx-2">aquí</a>.</p>
+				<p>En caso de detectar movimientos inusuales o no autorizados en tu cuenta bancaria, te sugerimos contactar de inmediato a tu banco o proveedor de tarjeta de crédito para resolver el problema.</p>
+				<p>Agradecemos tu confianza al realizar compras en <strong>Jaca Games</strong>, y trabajamos constantemente para garantizar que tus transacciones sean seguras y confiables.</p>
+        	</div>
+        </div>
+	<body>
+</html>
