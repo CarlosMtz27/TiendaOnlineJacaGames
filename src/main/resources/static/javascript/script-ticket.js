@@ -1,16 +1,14 @@
 function imprimirTicket() {
-    //window.print();
+    
     $("#ticketButton").text("Pixel Palace - Tu Portal al Mundo de la Diversión Virtual");
-    // Redirect to the home page
     var button = document.getElementById("ticketButton");
     button.style.backgroundColor = "transparent";
     button.style.border = "none";
-    button.style.color = "#007bff"; // Change the text color to your desired color
+    button.style.color = "#007bff"; 
     var button = document.getElementById("graciasAlert");
     button.style.backgroundColor = "transparent";
     button.style.border = "none";
     button.style.color = "black";
-    // window.location.href = "@{/}";
     window.print();
 }
 
