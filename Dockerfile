@@ -7,6 +7,9 @@ WORKDIR /app
 # Copiar los archivos de tu proyecto
 COPY . .
 
+# Dar permisos de ejecución al wrapper de Maven
+RUN chmod +x mvnw
+
 # Construir el proyecto y generar el archivo .jar
 RUN ./mvnw clean package -DskipTests
 
@@ -20,7 +23,7 @@ WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 
 # Exponer el puerto de la aplicación
-EXPOSE 8082
+EXPOSE 8080
 
 # Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
