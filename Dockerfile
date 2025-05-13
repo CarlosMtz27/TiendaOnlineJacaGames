@@ -23,6 +23,10 @@ WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 COPY src/main/resources/static /app/static
 
+# Crear carpeta para imágenes dinámicas
+RUN mkdir -p /app/uploads
+VOLUME /app/uploads
+
 # Exponer el puerto de la aplicación
 EXPOSE 8080
 
