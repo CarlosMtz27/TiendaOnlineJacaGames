@@ -1,5 +1,6 @@
 package com.uacm.pixelpalace.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -62,8 +63,13 @@ public class ProductoController {
 		producto.setUsuario(u);	
 		//imagen
 		if (producto.getId()==null) { // cuando se crea un producto
-			String nombreImagen= upload.saveImage(file);
-			producto.setImagen(nombreImagen);
+			//String nombreImagen= upload.saveImage(file);
+			//producto.setImagen(nombreImagen);
+			 String nombreImagen = file.getOriginalFilename();
+	            String rutaImagen = "/app/uploads/" + nombreImagen;
+	            File imagenDestino = new File(rutaImagen);
+	            file.transferTo(imagenDestino);
+	            producto.setImagen(nombreImagen);
 		}else {
 			
 		}
