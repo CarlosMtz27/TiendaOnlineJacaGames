@@ -152,7 +152,7 @@ public class HomeController {
 		model.addAttribute("productos", productos);
 		model.addAttribute("valor", valor);
 
-		return "/usuario/juegos";
+		return "usuario/juegos";
 		// return "usuario/carrito";
 
 	}
