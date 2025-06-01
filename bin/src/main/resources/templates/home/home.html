@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Jaca Games</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- css de Bootstrap -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- iconos de los enlases de redes sociales -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Custom styles for this template -->
+<link th:href="@{css/estilos-home.css}" rel="stylesheet">
+<link rel="icon" href="images/almohadilla-de-juego.png" type="image/png">
+</head>
+
+
+<!-- <div class="mi-contenedor">
+		Navigation  <div th:include="home/template_home.html::header"></div> -->
+
+<body id="cuerpo-home">
+	<div class="contenedor">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<a class="navbar-brand" th:href="@{/}"> <i class="fas fa-gamepad"></i>
+				Jaca Games
+			</a>
+			<form class="form-inline ml-2" method="post" th:action="@{/search}">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Buscar productos" aria-label="Buscar" id="query"
+					list="resultados-list" oninput="buscarProductos()" name="nombre"
+					autocomplete="off">
+				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+					<i class="fas fa-search"></i>
+				</button>
+				<datalist id="resultados-list"></datalist>
+			</form>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{/}"> <i
+							class="fas fa-home"></i> Inicio
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/usuario/juegos}"> <i class="fas fa-gamepad"></i>
+							Juegos
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/usuario/login}"> <i class="fas fa-sign-in-alt"></i>Login
+					</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Page Content 
+		<div class="container mt-5">
+			<!-- Jumbotron Header 
+			<header class="jumbotron my-4">
+				<h1 class="display-3" id="h1-home">Bienvenido a Pixel Palace </h1>
+				<p class="lead" id="p-home">Tu Portal al Mundo de la Diversión Virtual</p>
+			</header>-
+			<div class="row">
+        		<div class="col-md-4 mb-4" th:each="producto: ${productos}">
+            		<div class="card">
+                		<img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})} " alt="">
+                		<div class="card-body">
+                    		<h5 class="card-title" th:text="${producto.nombre}"></h5>
+                    		<p class="card-text" th:text="${producto.descripcion}"></p>
+                		</div>
+                		<div class="card-footer">
+							<a th:href="@{verproducto/{id}(id=${producto.id})}" class="btn btn-success">Ver producto</a>
+						</div>
+            		</div>
+        		</div>
+			</div>
+		</div>-->
+
+
+		<main>
+			<ul class="slider1">
+				<th:block th:each="producto, iterStat : ${productos}"
+					th:if="${iterStat.index < 6}">
+					<li class="item1" th:style="'background-image: url(/images/' + ${producto.imagen} + ') '">
+						<div class="content1">
+							<h2 class="title1" th:text="${producto.nombre}"></h2>
+							<p class="descripcion" th:text="${producto.descripcion}"></p>
+							
+						</div>
+					</li>
+				</th:block>
+				
+			</ul>
+			<nav class="nav1">
+				<ion-icon class="btn1 prev" name="arrow-back-outline"></ion-icon>
+				<ion-icon class="btn1 next" name="arrow-forward-outline"></ion-icon>
+			</nav>
+		</main>
+	</div>
+	<!-- /.container -->
+	<!-- Footer 
+		<div th:include="usuario/template_usuario.html::footer"></div>
+		<!-- Bootstrap core JavaScript -->
+	<script th:src="@{javascript/script-home.js}"></script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

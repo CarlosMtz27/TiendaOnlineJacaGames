@@ -169,179 +169,11 @@
 		</nav>
 	</div>
 
-	<!-- Footer actualizado -->
-	
-	<div th:fragment="footer">
-    <footer class="footer-compact">
-        <div class="footer-content">
-            <div class="footer-row">
-                <div class="footer-brand">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Jaca Softworks</span>
-                </div>
-                <div class="copyright">© 2025 Todos los derechos reservados</div>
-            </div>
-            
-            <div class="footer-row">
-                <div class="footer-links">
-                    <a href="mailto:pixelpalaceuacm@gmail.com" class="footer-link">
-                        <i class="fas fa-envelope"></i> Contacto
-                    </a>
-                    <a th:href="@{/usuario/aviso-privacidad}" target="_blank" class="footer-link">
-                        <i class="fas fa-shield-alt"></i> Privacidad
-                    </a>
-                    <a th:href="@{/usuario/terminos-legales}" target="_blank" class="footer-link">
-                        <i class="fas fa-gavel"></i> Legal
-                    </a>
-                    <a th:href="@{/usuario/acuerdos}" target="_blank" class="footer-link">
-                        <i class="fas fa-file-contract"></i> Acuerdos
-                    </a>
-                    <a th:href="@{/usuario/reembolsos}" target="_blank" class="footer-link">
-                        <i class="fas fa-undo-alt"></i> Reembolsos
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-row">
-                <div class="social-media-links">
-                    <a href="https://www.facebook.com/tucuenta" target="_blank" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://twitter.com/tucuenta" target="_blank" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.instagram.com/tucuenta" target="_blank" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://t.me/tucuenta" target="_blank" class="social-icon">
-                        <i class="fab fa-telegram-plane"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <style>
-        /* Estilos para el footer compacto */
-        .footer-compact {
-            background-color: #0f0f1a;
-            color: #f5f6fa;
-            padding: 30px 20px;
-            border-top: 1px solid rgba(108, 92, 231, 0.3);
-        }
-        
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .footer-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1rem;
-            color: #f5f6fa;
-        }
-        
-        .footer-brand i {
-            color: #6c5ce7;
-            font-size: 1.2rem;
-        }
-        
-        .copyright {
-            font-size: 0.8rem;
-            color: rgba(245, 246, 250, 0.7);
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px 25px;
-        }
-        
-        .footer-link {
-            color: rgba(245, 246, 250, 0.8);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        
-        .footer-link i {
-            color: #a29bfe;
-            font-size: 0.85rem;
-        }
-        
-        .footer-link:hover {
-            color: #6c5ce7;
-        }
-        
-        .social-media-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(108, 92, 231, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #f5f6fa;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(108, 92, 231, 0.2);
-        }
-        
-        .social-icon:hover {
-            background: #6c5ce7;
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 600px) {
-            .footer-links {
-                gap: 10px 15px;
-            }
-            
-            .footer-link {
-                font-size: 0.8rem;
-            }
-            
-            .footer-brand {
-                font-size: 0.9rem;
-            }
-            
-            .social-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-</div>
-	
-	<!-- Footer
+	<!-- Footer -->
+	<!-- Footer -->
 <div th:fragment="footer">
     <footer class="bg-dark text-light text-center py-3">
-        © 2025 Jaca Softworks
+        © 2024 Jaca Softworks
         <div class="social-media-links my-2">
             <a href="https://www.facebook.com/tucuenta" target="_blank" class="social-media-link"><i
                     class="fab fa-facebook"></i></a>
@@ -360,7 +192,7 @@
             <a th:href="@{/usuario/reembolsos}" target="_blank" class="text-light mx-2">Reembolsos</a>
         </div>
     </footer>
-</div> -->
+</div>
 
 	<!-- Bootstrap core JavaScript y otros scripts -->
 	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Jaca Games</title>
+
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/login.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:include="home/template_home.html::header-login"></div>
+	 
+	 <div class="body2">
+  	<div class="wrapper">
+  		<div class = "form-box login">
+  			<h2>Registro</h2>
+  		    	<form   th:action="@{/usuario/save}" method="post" id="registroForm">
+  		    		<div class = "input-box">
+  		    			<span class ="icon"><ion-icon name="person-circle"></ion-icon></span>
+  		    			<input type="text" id="nombre" name="nombre" required>
+  		    			<label>Nombre</label>
+  		    		</div>
+  		    		<div class = "input-box">
+  		    			<span class ="icon"><ion-icon name="location"></ion-icon></span>
+  		    			<input type="text" id="direccion" name="direccion" required>
+  		    			<label>Direccion</label>
+  		    		</div>
+  		    		<div class = "input-box">
+  		    			<span class ="icon"><ion-icon name="person"></ion-icon></span>
+  		    			<input type="email" id="email" name="email" required>
+  		    			<label>Email</label>
+  		    		</div>
+  		    		 <div class = "input-box">
+  		    			<span class ="icon"><ion-icon name="lock-closed"></ion-icon></span>
+  		    			<input type="password" id="password" name="password" required>
+  		    			<label>Contraseña</label>
+  		    			<div class="show-password">
+							<input type="checkbox" id="showPasswordCheckbox">
+						<label for="showPasswordCheckbox" style="display: inline-block; margin-top: 51px;">Mostrar contraseña</label>
+						</div>
+  		    		</div>
+  		    		 <div style="display: flex; align-items: center; margin-top: 20px;">
+                    <input type="checkbox" id="aceptarTerminos" name="aceptarTerminos" required style="margin-right: 8px;">
+                    <label for="aceptarTerminos" style="margin: 0;">He leído y acepto los 
+                        <a th:href="@{/usuario/terminos}" target="_blank">términos y condiciones</a>.
+                    </label>
+                </div>
+
+  		    		<button type="submit" class="boton">Registrarte</button>
+  		    	</form>
+  		    	
+  			</div>
+  		</div>
+  	</div>
+
+	<!-- Footer -->
+	<div th:include="usuario/template_usuario.html::footer"></div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script>
+    document.getElementById('registroForm').addEventListener('submit', function(event) {
+        const checkbox = document.getElementById('aceptarTerminos');
+        if (!checkbox.checked) {
+            event.preventDefault(); // Evita el envío del formulario
+            alert('Debes aceptar los términos y condiciones para continuar.');
+        }
+    });
+</script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script th:src="@{/javascript/login-script.js}"></script>
+
+</body>
+
+</html>

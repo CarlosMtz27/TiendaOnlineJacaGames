@@ -1,0 +1,68 @@
+ body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .custom-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .custom-container h2 {
+            text-align: center;
+            color: #007bff; 
+        }
+
+        .payment-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .payment-form label {
+            font-weight: bold;
+        }
+
+        .payment-form input[type="text"],
+        .payment-form input[type="number"],
+        .payment-form input[type="password"],
+        .payment-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .payment-form input[type="text"]:focus,
+        .payment-form input[type="number"]:focus,
+        .payment-form input[type="password"]:focus,
+        .payment-form select:focus {
+            border-color: #007bff; 
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .payment-form .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff; 
+            border-color: #007bff; 
+            color: #fff;
+        }
+
+        .payment-form .btn-primary:hover {
+            background-color: #0056b3; 
+            border-color: #0056b3; 
+        }
+
+        .card-logo {
+            max-width: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .card-icon {
+            font-size: 36px;
+            color: #007bff;
+        }

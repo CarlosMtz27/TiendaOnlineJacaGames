@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Jaca Games</title>
+
+
+  <!-- Bootstrap core CSS -->
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+ <div th:include="usuario/template_usuario.html::header-user"></div>
+
+    <!-- Page Content -->
+    <div class="mi-contenedor">
+    <div class="container">
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">
+        Jaca Games <small>Resumen de la compra</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li class="breadcrumb-item active">Compra</li>
+      </ol>
+
+<div id="liveAlertPlaceholder"></div>
+      <!-- Blog Post -->
+      <div class="card mb-4">
+        <div class="card-body">
+        <div class="alert alert-warning" role="alert">
+  				<a th:href="@{aviso-pago}">AVISO IMPORTANTE CON LOS DATOS DE TU PAGO</a>
+</div>
+        <form th:action="@{saveVenta}" method="post">
+          <div class="row">
+           <div class="col-lg-9">
+
+              <div class="card-group">
+  				<div class="card">
+    				<div class="card-body">
+       					<h5 class="card-title">
+                			DATOS DE LA COMPRA
+              			</h5>
+              			<h6 th:text=" 'Nombre: '+ ${usuario.nombre}"> </h6>
+              			<h6 th:text="'Correo: '+  ${usuario.email}"></h6>
+              			<h6 th:text="'Dirección: '+ ${usuario.direccion}" ></h6>
+    				</div>
+  				</div>
+  				
+  				<div class="card">
+    				<div class="card-body">
+    				
+      					<h5 class="card-title">Datos del pago</h5>
+      					<h6 th:text=" 'Nombre de la tarjeta: '+ ${formaDePago.nombreTitular}"> </h6>
+      					<input type="hidden" th:value="${formaDePago.nombreTitular}" name="nombreTitular">
+      					<input type="hidden" th:value="${formaDePago.tipo}" name="tipo">
+      					<input type="hidden" th:value="${formaDePago.numero}" name="numero">
+              			<h6 th:text="'Forma de pago: '+  ${formaDePago.tipo}"></h6>
+              			<h6 th:text="'Numero de la tarjeta: '+ ${formaDePago.numero}" ></h6>
+              			
+    				</div>
+  				</div>
+			</div>
+			<h5 class="card-title">
+                PRODUCTOS
+             </h5>
+              
+              <div class="alert alert-light" role="alert">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Producto</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="dtventa:${cart}">
+                     <td th:text="${dtventa.nombre}"></td>
+                     <td th:text="${dtventa.precio}"></td>
+                     <td th:text="${dtventa.cantidad}"></td>
+                     <td th:text="${dtventa.total}"></td>
+
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+
+           
+         </div>
+
+
+         <div class="col-lg-3">
+          <h2 class="card-title">Resumen Compra</h2>
+
+          <ul class="list-group">
+            <li class="list-group-item"><h5 th:text=" 'Total: '+ ${venta.total} "> </h5></li>
+            <!--  <a th:href="@{saveVenta}" class="btn btn-dark">Pagar</a> -->
+            <button id="pagar" type="submit">Pagar</button>
+            
+           
+           
+          </ul>
+          
+        </div>
+        
+      </div>
+       </form>
+
+    </div>
+  </div>
+  </div>
+    </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <div th:include="usuario/template_usuario.html::footer">
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script >
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+const appendAlert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
+
+const alertTrigger = document.getElementById('pagar')
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', () => {
+    appendAlert('Espera, ya casi tienes tu compra!', 'success')
+  })
+}
+</script>
+	<!-- Bootstrap core JavaScript -->
+	<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	 
+
+</body>
+
+</html>

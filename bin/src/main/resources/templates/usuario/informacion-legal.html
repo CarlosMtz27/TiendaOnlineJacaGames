@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Legal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .scroll-box {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Información Legal</h1>
+        <div class="scroll-box">
+            <h2>Datos de la Empresa</h2>
+            <p>
+                Nombre de la empresa: <strong>JacaSoftworks</strong><br>
+                RFC: VOS123456789<br>
+                Dirección: San Lorenzo Tezonco, Ciudad de México, Méxio<br>
+                Teléfono: +1 (555) 123-4567<br>
+                Correo electrónico: <a href="mailto:pixelpalaceuacm@gmail.com">pixelpalaceuacm@gmail.com</a>
+            </p>
+
+            <h2>Términos y Condiciones</h2>
+            <p>
+                Al utilizar este sitio web, aceptas los <a th:href="@{/usuario/terminos}">Términos y Condiciones</a> 
+                que regulan el uso de nuestros servicios y productos. Por favor, léelos detenidamente antes de realizar cualquier compra.
+            </p>
+
+            <h2>Política de Privacidad</h2>
+            <p>
+                Nos comprometemos a proteger tu privacidad. Puedes consultar cómo recopilamos, usamos y protegemos tu información personal en 
+                nuestra <a th:href="@{/usuario/aviso-privacidad}">Política de Privacidad</a>.
+            </p>
+
+            <h2>Propiedad Intelectual</h2>
+            <p>
+                Todo el contenido de este sitio web, incluyendo texto, imágenes, logos, y diseños, es propiedad de 
+                <strong>Jaca Softworks.</strong> o de sus respectivos titulares. Está prohibido reproducir, distribuir o modificar
+                cualquier contenido sin autorización previa.
+            </p>
+
+            <h2>Resolución de Disputas</h2>
+            <p>
+                En caso de disputa, ambas partes acuerdan someterse a la jurisdicción de los tribunales de la Ciudad Virtual. Para consultas legales, contáctanos en 
+              <a href="mailto:pixelpalaceuacm@gmail.com">pixelpalaceuacm@gmail.com</a>.
+            </p>
+        </div>
+        <p><strong>&copy; 2024 Jaca Softworks.</strong></p>
+    </div>
+</body>
+</html>
