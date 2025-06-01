@@ -451,40 +451,16 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    <!-- Custom JS -->
-    <script>
-        // Toggle entre vistas
-        document.addEventListener('DOMContentLoaded', function() {
-            const btnLista = document.getElementById('btnLista');
-            const btnTarjetas = document.getElementById('btnTarjetas');
-            const listaView = document.getElementById('lista-view');
-            const cardsView = document.getElementById('cards-view');
-            
-            btnLista.addEventListener('click', function() {
-                listaView.style.display = 'block';
-                cardsView.style.display = 'none';
-                btnLista.classList.add('active');
-                btnTarjetas.classList.remove('active');
-            });
-            
-            btnTarjetas.addEventListener('click', function() {
-                listaView.style.display = 'none';
-                cardsView.style.display = 'flex';
-                btnLista.classList.remove('active');
-                btnTarjetas.classList.add('active');
-            });
-            
-            // Mostrar alerta si es necesario
-            if (document.querySelector('[th\\:if="${valor ==true}"]')) {
-                th:if="${valor ==true}" th:src="@{/javascript/alerta.js}";
-            }
-        });
-    </script>
+
+    
+
     
     <!-- Otros scripts -->
     <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
     <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/javascript/script-buscador.js}"></script>
-    <script th:src="@{/javascript/juegos-script.js}"></script>
+    <<script th:src="@{/javascript/juegos-script.js}"></script>
+    <script th:if="${valor == true}" th:src="@{/javascript/alerta.js}"></script>
+    
 </body>
 </html>

@@ -1,23 +1,32 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const btnLista    = document.getElementById('btnLista');
+    const btnTarjetas = document.getElementById('btnTarjetas');
+    const listView    = document.getElementById('lista-view');
+    const cardView    = document.getElementById('cards-view');
 
-document.addEventListener('DOMContentLoaded', function() {
-	const btnLista = document.getElementById('btnLista');
-	const btnTarjetas = document.getElementById('btnTarjetas');
-	const listaJuegos = document.querySelector('.lista-juegos');
-	const juegoCards = document.querySelectorAll('.juego-card');
+    // Click en "Vista de Lista"
+    btnLista.addEventListener('click', function() {
+        btnLista.classList.add('active');
+        btnTarjetas.classList.remove('active');
+        
+        // Mostrar lista, ocultar tarjetas
+        listView.style.display = 'block';
+        cardView.style.display = 'none';
+    });
 
-	// Función para mostrar la vista de lista
-	btnLista.addEventListener('click', function() {
-		listaJuegos.style.display = 'block';
-		juegoCards.forEach(card => card.style.display = 'none');
-	});
+    // Click en "Vista de Tarjetas"
+    btnTarjetas.addEventListener('click', function() {
+        btnTarjetas.classList.add('active');
+        btnLista.classList.remove('active');
+        
+        // Ocultar lista, mostrar tarjetas manteniendo display: flex
+        listView.style.display = 'none';
+        cardView.style.display = 'flex';
+    });
 
-	// Función para mostrar la vista de tarjetas
-	btnTarjetas.addEventListener('click', function() {
-		listaJuegos.style.display = 'none';
-		juegoCards.forEach(card => card.style.display = 'block');
-	});
-
-	// Inicializar con la vista de tarjetas ocultando la lista al cargar la página
-	listaJuegos.style.display = 'none';
-	juegoCards.forEach(card => card.style.display = 'block');
+    // Estado inicial (al cargar la página): ocultar lista, mostrar tarjetas
+    btnLista.classList.remove('active');
+    btnTarjetas.classList.add('active');
+    listView.style.display = 'none';
+    cardView.style.display = 'flex';
 });
