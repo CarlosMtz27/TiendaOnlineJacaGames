@@ -38,6 +38,20 @@ public class Producto {
 	 @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
 	 private List<DetalleVenta> detalles;
 	
+
+	 // para las puebas implemento datos al contructor
+	 
+	 Producto producto = new Producto(
+			    1,                      // id
+			    "Cyberpunk 2077",       // nombre
+			    "Descripción",          // descripcion
+			    "imagen.jpg",           // imagen
+			    59.99,                  // precio
+			    10,                     // cantidad
+			    "RPG",                  // genero
+			    new Usuario()           // usuario
+			);
+	 
 	public Producto() {
 
 	}
@@ -228,7 +242,17 @@ public class Producto {
 		return null;
 	}
 
-
+	
+	// para las rpuebas unitarias
+	public Producto(Integer id, String nombre, double precio) {
+	    this.id = id;
+	    this.nombre = nombre;
+	    this.precio = precio;
+	    // Valores por defecto para otros campos
+	    this.descripcion = "";
+	    this.cantidad = 0;
+	    this.genero = "Generico";
+	}
 	
 
 
