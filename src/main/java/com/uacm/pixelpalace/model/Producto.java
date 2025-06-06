@@ -24,7 +24,7 @@ public class Producto {
 	private String imagen;
 	private double precio;
 	private int cantidad;
-	private String genero;//AQUI UNA MODIFICACION
+	private String genero;
 	//Modificaciones
 	private String sistema_operativo;
 	private String procesador;
@@ -37,42 +37,12 @@ public class Producto {
 
 	 @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
 	 private List<DetalleVenta> detalles;
-	
 
-	 // para las puebas implemento datos al contructor
-	 
-	 /*Producto producto = new Producto(
-			    1,                      // id
-			    "Cyberpunk 2077",       // nombre
-			    "Descripción",          // descripcion
-			    "imagen.jpg",           // imagen
-			    59.99,                  // precio
-			    10,                     // cantidad
-			    "RPG",                  // genero
-			    new Usuario()           // usuario
-			);*/
 	 
 	public Producto() {
 
 	}
 
-
-	/*public Producto(Integer id, String nombre, String descripcion, String imagen, double precio, int cantidad,
-			Usuario usuario) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.imagen = imagen;
-		this.precio = precio;
-		this.cantidad = cantidad;
-
-		this.usuario = usuario;
-	}*/
-
-
-
-	
 
 	public String getGenero() {
 		return genero;
